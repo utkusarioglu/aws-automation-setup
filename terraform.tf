@@ -1,3 +1,8 @@
+module "budget" {
+  source = "./src/budget"
+  budget_email = var.BUDGET_EMAIL
+}
+
 module "workshop_aws_terraform" {
   source = "./src/workshop-aws-terraform"
 }
