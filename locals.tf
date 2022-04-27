@@ -1,6 +1,6 @@
 locals {
   default_tags = {
-    Repo = "aws-automation-setup"
+    Repo        = "aws-automation-setup"
     StateSource = "u-Schumann"
   }
 }

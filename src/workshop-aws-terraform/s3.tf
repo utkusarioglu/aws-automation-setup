@@ -1,7 +1,7 @@
 # Stores tf state for the repo `workshop-aws-terraform`
 resource "aws_s3_bucket" "ws_aws_tf_state" {
   bucket = "ws-aws-terraform-state"
-  tags = local.default_tags
+  tags   = local.default_tags
 }
 
 resource "aws_s3_bucket_versioning" "ws_aws_tf_state" {

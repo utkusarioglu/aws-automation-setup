@@ -2,7 +2,7 @@ resource "aws_iam_policy" "ws_aws_terraform_s3_policy" {
   name        = "ws-aws-terraform-s3-policy"
   path        = "/"
   description = "Allows minimal access for storing tf state in AWS S3"
-  tags = local.default_tags
+  tags        = local.default_tags
 
   policy = jsonencode({
     Version = "2012-10-17"
@@ -29,7 +29,7 @@ resource "aws_iam_policy" "ws_aws_terraform_dynamodb_policy" {
   name        = "ws-aws-terraform-dynamodb-policy"
   path        = "/"
   description = "Allows minimal DynamoDB access to store and query tf state lock"
-  tags = local.default_tags
+  tags        = local.default_tags
 
   policy = jsonencode({
     Version = "2012-10-17"

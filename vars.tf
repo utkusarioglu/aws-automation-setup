@@ -1,5 +1,5 @@
 variable "BUDGET_EMAIL" {
-  type = string
+  type        = string
   description = "Email address that will be notified for budget issues"
-  sensitive = true
+  sensitive   = true
 }
