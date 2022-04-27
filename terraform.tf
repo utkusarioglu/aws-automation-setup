@@ -5,6 +5,7 @@ module "budget" {
 
 module "workshop_aws_terraform" {
   source = "./src/workshop-aws-terraform"
+  inherited_tags = local.default_tags
 }
 
 output "workshop_aws_terraform" {
