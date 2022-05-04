@@ -9,5 +9,9 @@ terraform {
 
 provider "aws" {
   region                   = "eu-central-1"
-  shared_credentials_files = ["${path.root}/secrets/aws_credentials"]
+}
+
+provider "aws" {
+  alias = "west_2"
+  region                   = "us-west-2"
 }
