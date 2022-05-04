@@ -4,7 +4,7 @@ data "aws_iam_policy_document" "gh_actions" {
     actions = ["sts:AssumeRoleWithWebIdentity"]
     principals {
       type        = "Federated"
-      identifiers = [aws_iam_openid_connect_provider.github_oidc.arn]
+      identifiers = [var.github_oidc_arn]
     }
     condition {
       test     = "StringLike"
