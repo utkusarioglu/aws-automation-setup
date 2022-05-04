@@ -4,6 +4,6 @@ variable "inherited_tags" {
 }
 
 variable "github_oidc_arn" {
-  type = string
+  type        = string
   description = "Github OpenID Connect ARN"
 }
