@@ -2,6 +2,7 @@
 secrets
 *.tfstate
 *.tfstate.backup
-secret.tfvars
+secret*.tfvars
 *.env
 !example.env
+*.tfstate.lock*
