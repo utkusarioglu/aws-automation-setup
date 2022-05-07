@@ -1,4 +1,5 @@
 resource "aws_iam_policy" "state_store" {
+  provider    = aws.eu_central_1
   name        = "utkusarioglu-com-state-store"
   path        = "/"
   description = "Allows minimal access for storing tf state in AWS S3"
@@ -26,6 +27,7 @@ resource "aws_iam_policy" "state_store" {
 }
 
 resource "aws_iam_policy" "state_lock" {
+  provider    = aws.eu_central_1
   name        = "utkusarioglu-com-state-lock"
   path        = "/"
   description = "Allows minimal DynamoDB access to store and query tf state lock"
@@ -43,6 +45,39 @@ resource "aws_iam_policy" "state_lock" {
           "dynamodb:DeleteItem"
         ]
       }
+    ]
+  })
+}
+
+resource "aws_iam_policy" "static_content_write" {
+  provider    = aws.eu_central_1
+  name        = "utkusarioglu-com-static-content-write"
+  path        = "/"
+  description = "Allows adding and removing object to static content bucket"
+  tags        = local.default_tags
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Effect   = "Allow",
+        Resource = "arn:aws:s3:::${aws_s3_bucket.static_content.bucket}"
+        Action = [
+          "s3:ListBucket",
+          # "s3:GetBucketTagging"
+        ]
+      },
+      {
+        Effect   = "Allow"
+        Resource = "arn:aws:s3:::${aws_s3_bucket.static_content.bucket}/**"
+        Action = [
+          "s3:GetObject",
+          "s3:PutObject",
+          "s3:DeleteObject",
+          # "s3:GetBucketTagging",
+          "s3:GetObjectTagging"
+        ],
+      },
     ]
   })
 }
