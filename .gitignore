@@ -6,3 +6,4 @@ secret*.tfvars
 *.env
 !example.env
 *.tfstate.lock*
+.ignore
