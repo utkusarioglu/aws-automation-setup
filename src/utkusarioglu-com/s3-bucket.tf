@@ -38,7 +38,7 @@ resource "aws_s3_bucket_website_configuration" "static_content" {
   }
 
   error_document {
-    key = "error.html"
+    key = "index.html"
   }
 }
 
