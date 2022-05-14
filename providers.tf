@@ -5,6 +5,12 @@ terraform {
       version = "4.11.0"
     }
   }
+  backend "s3" {
+    bucket = "utkusarioglu-aws-automation-setup-state"
+    key = "terraform.tfstate"
+    region = "eu-central-1"
+    dynamodb_table = "utkusarioglu-aws-automation-setup-lock"
+  }
 }
 
 provider "aws" {
