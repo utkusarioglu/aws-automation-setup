@@ -53,10 +53,7 @@ resource "aws_cloudfront_distribution" "static_content" {
   }
 
   viewer_certificate {
-    # cloudfront_default_certificate = true 
-    # acm_certificate_arn = aws_acm_certificate.domain_ssl.arn
     acm_certificate_arn = aws_acm_certificate_validation.domain.certificate_arn
-    # acm_certificate_arn = data.aws_acm_certificate.domain_ssl.arn
     ssl_support_method       = "sni-only"
     minimum_protocol_version = "TLSv1.1_2016"
   }
@@ -67,7 +64,6 @@ resource "aws_cloudfront_distribution" "static_content" {
 resource "aws_cloudfront_distribution" "bare_domain" {
   depends_on = [
     aws_s3_bucket.bare_domain_redirect,
-    # data.aws_acm_certificate.domain_ssl
   ]
   provider = aws.us_west_2
   origin {
@@ -120,9 +116,6 @@ resource "aws_cloudfront_distribution" "bare_domain" {
   }
 
   viewer_certificate {
-    # cloudfront_default_certificate = true 
-    # acm_certificate_arn = aws_acm_certificate.domain_ssl.arn
-    # acm_certificate_arn = data.aws_acm_certificate.domain_ssl.arn
     acm_certificate_arn      = aws_acm_certificate_validation.domain.certificate_arn
     ssl_support_method       = "sni-only"
     minimum_protocol_version = "TLSv1.1_2016"
