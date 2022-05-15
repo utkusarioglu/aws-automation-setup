@@ -30,6 +30,12 @@ data "aws_iam_policy_document" "static_content_public_read" {
     resources = [
       "${aws_s3_bucket.static_content.arn}/*",
     ]
+
+    condition {
+      test = "StringEquals"
+      variable = "aws:Referer" 
+      values = [var.referer_value]
+    }
   }
 }
 

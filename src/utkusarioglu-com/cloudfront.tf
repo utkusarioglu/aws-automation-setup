@@ -6,6 +6,10 @@ resource "aws_cloudfront_distribution" "static_content" {
   origin {
     domain_name = aws_s3_bucket.static_content.website_endpoint
     origin_id   = "s3.www.${aws_s3_bucket.static_content.bucket}"
+    custom_header {
+      name = "Referer"
+      value = var.referer_value
+    }
     custom_origin_config {
       http_port              = "80"
       https_port             = "443"
