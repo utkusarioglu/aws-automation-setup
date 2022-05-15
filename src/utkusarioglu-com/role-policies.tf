@@ -64,7 +64,6 @@ resource "aws_iam_policy" "static_content_write" {
         Resource = "arn:aws:s3:::${aws_s3_bucket.static_content.bucket}"
         Action = [
           "s3:ListBucket",
-          # "s3:GetBucketTagging"
         ]
       },
       {
@@ -74,7 +73,6 @@ resource "aws_iam_policy" "static_content_write" {
           "s3:GetObject",
           "s3:PutObject",
           "s3:DeleteObject",
-          # "s3:GetBucketTagging",
           "s3:GetObjectTagging"
         ],
       },

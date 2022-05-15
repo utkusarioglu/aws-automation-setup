@@ -24,11 +24,3 @@ resource "aws_iam_policy_attachment" "static_content_write" {
     aws_iam_role.gh_actions.name
   ]
 }
-
-# resource "aws_iam_policy_attachment" "vpc" {
-#   name       = "ws-aws-tf-vpc-policy"
-#   policy_arn = "arn:aws:iam::aws:policy/AmazonVPCFullAccess"
-#   roles = [
-#     aws_iam_role.gh_actions.name
-#   ]
-# }

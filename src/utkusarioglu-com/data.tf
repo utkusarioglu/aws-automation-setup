@@ -37,10 +37,3 @@ data "aws_s3_bucket" "static_content_website_endpoint" {
   provider = aws.us_west_2
   bucket   = aws_s3_bucket.static_content.bucket
 }
-
-# data "aws_acm_certificate" "domain_ssl" {
-#   provider    = aws.us_east_1
-#   domain      = "${local.domain_name}"
-#   # statuses    = ["ISSUED"]
-#   most_recent = true
-# }
