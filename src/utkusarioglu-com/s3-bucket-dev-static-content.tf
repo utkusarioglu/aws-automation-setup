@@ -6,6 +6,9 @@ resource "aws_s3_bucket" "dev_static_content" {
 }
 
 resource "aws_s3_bucket_website_configuration" "dev_static_content" {
+  depends_on = [
+    aws_s3_bucket.dev_static_content
+  ]
   provider = aws.us_west_2
   bucket   = aws_s3_bucket.dev_static_content.bucket
 
@@ -19,6 +22,9 @@ resource "aws_s3_bucket_website_configuration" "dev_static_content" {
 }
 
 resource "aws_s3_bucket_cors_configuration" "dev_static_content" {
+  depends_on = [
+    aws_s3_bucket.dev_static_content
+  ]
   provider = aws.us_west_2
   bucket   = aws_s3_bucket.dev_static_content.bucket
 
@@ -31,6 +37,9 @@ resource "aws_s3_bucket_cors_configuration" "dev_static_content" {
 }
 
 resource "aws_s3_bucket_policy" "dev_static_content" {
+  depends_on = [
+    aws_s3_bucket.dev_static_content
+  ]
   provider = aws.us_west_2
   bucket   = aws_s3_bucket.dev_static_content.bucket
   policy   = data.aws_iam_policy_document.dev_static_content_public_read.json
