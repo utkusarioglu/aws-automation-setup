@@ -9,7 +9,7 @@ data "aws_iam_policy_document" "workshop_aws_terraform_gh_actions" {
     condition {
       test     = "StringLike"
       variable = "token.actions.githubusercontent.com:sub"
-      values   = ["repo:utkusarioglu/workshop-aws-terraform:*"]
+      values   = ["repo:utkusarioglu/aws-terraform-workshop:*"]
     }
   }
 }
