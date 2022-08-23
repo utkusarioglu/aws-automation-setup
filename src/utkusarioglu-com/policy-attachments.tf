@@ -16,10 +16,10 @@ resource "aws_iam_policy_attachment" "state_lock" {
   ]
 }
 
-resource "aws_iam_policy_attachment" "static_content_write" {
+resource "aws_iam_policy_attachment" "main_static_content_write" {
   provider   = aws.us_west_2
   name       = "utkusarioglu-com-static-content-write"
-  policy_arn = aws_iam_policy.static_content_write.arn
+  policy_arn = aws_iam_policy.main_static_content_write.arn
   roles = [
     aws_iam_role.gh_actions.name
   ]

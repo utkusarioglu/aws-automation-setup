@@ -15,7 +15,7 @@ data "aws_iam_policy_document" "gh_actions" {
   }
 }
 
-data "aws_iam_policy_document" "static_content_public_read" {
+data "aws_iam_policy_document" "main_static_content_public_read" {
   provider = aws.us_west_2
   statement {
     principals {
@@ -28,7 +28,7 @@ data "aws_iam_policy_document" "static_content_public_read" {
     ]
 
     resources = [
-      "${aws_s3_bucket.static_content.arn}/*",
+      "${aws_s3_bucket.main_static_content.arn}/*",
     ]
 
     condition {
@@ -39,7 +39,7 @@ data "aws_iam_policy_document" "static_content_public_read" {
   }
 }
 
-data "aws_s3_bucket" "static_content_website_endpoint" {
+data "aws_s3_bucket" "main_static_content_website_endpoint" {
   provider = aws.us_west_2
-  bucket   = aws_s3_bucket.static_content.bucket
+  bucket   = aws_s3_bucket.main_static_content.bucket
 }

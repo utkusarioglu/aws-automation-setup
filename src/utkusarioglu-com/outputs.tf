@@ -3,9 +3,9 @@ output "iam_role_gh_actions_arn" {
 }
 
 output "s3_static_content_arn" {
-  value = aws_s3_bucket.static_content.arn
+  value = aws_s3_bucket.main_static_content.arn
 }
 
-output "static_content_website_endpoint" {
-  value = data.aws_s3_bucket.static_content_website_endpoint.website_endpoint
+output "main_static_content_website_endpoint" {
+  value = data.aws_s3_bucket.main_static_content_website_endpoint.website_endpoint
 }

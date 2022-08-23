@@ -1,11 +1,11 @@
-resource "aws_cloudfront_distribution" "static_content" {
+resource "aws_cloudfront_distribution" "main_static_content" {
   depends_on = [
-    aws_s3_bucket.static_content,
+    aws_s3_bucket.main_static_content,
   ]
   provider = aws.us_west_2
   origin {
-    domain_name = aws_s3_bucket.static_content.website_endpoint
-    origin_id   = "s3.www.${aws_s3_bucket.static_content.bucket}"
+    domain_name = aws_s3_bucket.main_static_content.website_endpoint
+    origin_id   = "s3.www.${aws_s3_bucket.main_static_content.bucket}"
     custom_header {
       name = "Referer"
       value = var.referer_value
@@ -33,7 +33,7 @@ resource "aws_cloudfront_distribution" "static_content" {
   default_cache_behavior {
     allowed_methods  = ["GET", "HEAD"]
     cached_methods   = ["GET", "HEAD"]
-    target_origin_id = "s3.www.${aws_s3_bucket.static_content.bucket}"
+    target_origin_id = "s3.www.${aws_s3_bucket.main_static_content.bucket}"
 
     forwarded_values {
       query_string = false

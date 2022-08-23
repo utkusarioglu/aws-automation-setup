@@ -49,7 +49,7 @@ resource "aws_iam_policy" "state_lock" {
   })
 }
 
-resource "aws_iam_policy" "static_content_write" {
+resource "aws_iam_policy" "main_static_content_write" {
   provider    = aws.eu_central_1
   name        = "utkusarioglu-com-static-content-write"
   path        = "/"
@@ -61,14 +61,14 @@ resource "aws_iam_policy" "static_content_write" {
     Statement = [
       {
         Effect   = "Allow",
-        Resource = "arn:aws:s3:::${aws_s3_bucket.static_content.bucket}"
+        Resource = "arn:aws:s3:::${aws_s3_bucket.main_static_content.bucket}"
         Action = [
           "s3:ListBucket",
         ]
       },
       {
         Effect   = "Allow"
-        Resource = "arn:aws:s3:::${aws_s3_bucket.static_content.bucket}/**"
+        Resource = "arn:aws:s3:::${aws_s3_bucket.main_static_content.bucket}/**"
         Action = [
           "s3:GetObject",
           "s3:PutObject",
