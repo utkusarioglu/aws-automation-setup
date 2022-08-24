@@ -2,7 +2,7 @@
 resource "aws_s3_bucket" "state_store" {
   provider = aws.eu_central_1
   bucket   = "utkusarioglu-com-state-store"
-  tags     = local.default_tags
+  tags     = local.main_tags
 }
 
 resource "aws_s3_bucket_versioning" "state_store" {

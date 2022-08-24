@@ -3,7 +3,7 @@ resource "aws_iam_policy" "state_store" {
   name        = "utkusarioglu-com-state-store"
   path        = "/"
   description = "Allows minimal access for storing tf state in AWS S3"
-  tags        = local.default_tags
+  tags        = local.main_tags
 
   policy = jsonencode({
     Version = "2012-10-17"
@@ -31,7 +31,7 @@ resource "aws_iam_policy" "state_lock" {
   name        = "utkusarioglu-com-state-lock"
   path        = "/"
   description = "Allows minimal DynamoDB access to store and query tf state lock"
-  tags        = local.default_tags
+  tags        = local.main_tags
 
   policy = jsonencode({
     Version = "2012-10-17"
@@ -54,7 +54,7 @@ resource "aws_iam_policy" "main_static_content_write" {
   name        = "utkusarioglu-com-static-content-write"
   path        = "/"
   description = "Allows adding and removing object to static content bucket"
-  tags        = local.default_tags
+  tags        = local.main_tags
 
   policy = jsonencode({
     Version = "2012-10-17"
