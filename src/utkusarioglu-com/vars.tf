@@ -9,7 +9,7 @@ variable "github_oidc_arn" {
 }
 
 variable "referer_value" {
-  type = string
+  type        = string
   description = "Referer value used between cloudfront and s3"
-  sensitive = true
+  sensitive   = true
 }
