@@ -19,6 +19,13 @@ resource "aws_s3_bucket_website_configuration" "dev_static_content" {
   error_document {
     key = "index.html"
   }
+
+  # routing_rule {
+  #   redirect {
+  #   host_name = "dev.${local.domain_name}"
+  #     replace_key_prefix_with = "/"
+  #   }
+  # } 
 }
 
 resource "aws_s3_bucket_cors_configuration" "dev_static_content" {

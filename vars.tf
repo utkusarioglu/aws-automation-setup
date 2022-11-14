@@ -5,7 +5,7 @@ variable "BUDGET_EMAIL" {
 }
 
 variable "REFERER_VALUE" {
-  type = string
+  type        = string
   description = "Referer value used between cloudfront and s3"
-  sensitive = true
+  sensitive   = true
 }

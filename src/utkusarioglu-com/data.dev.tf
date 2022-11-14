@@ -15,9 +15,9 @@ data "aws_iam_policy_document" "dev_static_content_public_read" {
     ]
 
     condition {
-      test = "StringEquals"
-      variable = "aws:Referer" 
-      values = [var.referer_value]
+      test     = "StringEquals"
+      variable = "aws:Referer"
+      values   = [var.referer_value]
     }
   }
 }

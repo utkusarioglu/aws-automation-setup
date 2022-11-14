@@ -7,7 +7,7 @@ resource "aws_cloudfront_distribution" "dev_static_content" {
     domain_name = aws_s3_bucket.dev_static_content.website_endpoint
     origin_id   = "s3.www.${aws_s3_bucket.dev_static_content.bucket}"
     custom_header {
-      name = "Referer"
+      name  = "Referer"
       value = var.referer_value
     }
     custom_origin_config {
@@ -44,9 +44,9 @@ resource "aws_cloudfront_distribution" "dev_static_content" {
     }
 
     viewer_protocol_policy = "redirect-to-https"
-    min_ttl                = 31536000
-    default_ttl            = 31536000
-    max_ttl                = 31536000
+    min_ttl                = local.dev_cloudfront_ttl
+    default_ttl            = local.dev_cloudfront_ttl
+    max_ttl                = local.dev_cloudfront_ttl
     compress               = true
   }
 
@@ -57,7 +57,7 @@ resource "aws_cloudfront_distribution" "dev_static_content" {
   }
 
   viewer_certificate {
-    acm_certificate_arn = aws_acm_certificate_validation.domain.certificate_arn
+    acm_certificate_arn      = aws_acm_certificate_validation.domain.certificate_arn
     ssl_support_method       = "sni-only"
     minimum_protocol_version = "TLSv1.1_2016"
   }

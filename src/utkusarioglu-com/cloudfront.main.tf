@@ -7,7 +7,7 @@ resource "aws_cloudfront_distribution" "main_static_content" {
     domain_name = aws_s3_bucket.main_static_content.website_endpoint
     origin_id   = "s3.www.${aws_s3_bucket.main_static_content.bucket}"
     custom_header {
-      name = "Referer"
+      name  = "Referer"
       value = var.referer_value
     }
     custom_origin_config {
@@ -57,7 +57,7 @@ resource "aws_cloudfront_distribution" "main_static_content" {
   }
 
   viewer_certificate {
-    acm_certificate_arn = aws_acm_certificate_validation.domain.certificate_arn
+    acm_certificate_arn      = aws_acm_certificate_validation.domain.certificate_arn
     ssl_support_method       = "sni-only"
     minimum_protocol_version = "TLSv1.1_2016"
   }

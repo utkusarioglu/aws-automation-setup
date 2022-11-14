@@ -17,7 +17,7 @@ module "utkusarioglu_com" {
   source          = "./src/utkusarioglu-com"
   inherited_tags  = local.default_tags
   github_oidc_arn = aws_iam_openid_connect_provider.github_oidc.arn
-  referer_value = var.REFERER_VALUE
+  referer_value   = var.REFERER_VALUE
   providers = {
     aws.eu_central_1 = aws.eu_central_1
     aws.us_west_2    = aws.us_west_2

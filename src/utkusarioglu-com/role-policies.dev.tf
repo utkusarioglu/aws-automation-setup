@@ -79,3 +79,39 @@ resource "aws_iam_policy" "dev_static_content_write" {
     ]
   })
 }
+
+
+// bind this
+resource "aws_iam_policy" "cache_invalidate" {
+  provider    = aws.eu_central_1
+  name        = "utkusarioglu-com-dev-cache-invalidate"
+  path        = "/"
+  description = "Allows Cloudfront cache invalidation"
+  tags        = local.dev_tags
+
+  policy = jsonencode({
+    Version = "2012-10-17",
+    Statement = [
+      {
+        "Effect" : "Allow",
+        "Action" : [
+          # "acm:ListCertificates",
+          # "cloudfront:GetDistribution",
+          # "cloudfront:GetDistributionConfig",
+          "cloudfront:ListDistributions",
+          # "cloudfront:ListCloudFrontOriginAccessIdentities",
+          # "elasticloadbalancing:DescribeLoadBalancers",
+          # "iam:ListServerCertificates",
+          # "sns:ListSubscriptionsByTopic",
+          # "sns:ListTopics",
+          # "waf:GetWebACL",
+          # "waf:ListWebACLs",
+          "cloudfront:CreateInvalidation",
+          "cloudfront:GetInvalidation",
+          "cloudfront:ListInvalidations"
+        ],
+        "Resource" : "*"
+      }
+    ]
+  })
+}

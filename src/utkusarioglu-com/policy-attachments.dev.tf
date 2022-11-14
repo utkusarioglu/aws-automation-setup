@@ -24,3 +24,12 @@ resource "aws_iam_policy_attachment" "dev_static_content_write" {
     aws_iam_role.gh_actions.name
   ]
 }
+
+resource "aws_iam_policy_attachment" "cache_invalidate" {
+  provider = aws.us_west_2
+  name = "utkusarioglu-com-dev-cache-invalidate"
+  policy_arn = aws_iam_policy.cache_invalidate.arn
+  roles = [
+    aws_iam_role.gh_actions.name
+  ]
+}
