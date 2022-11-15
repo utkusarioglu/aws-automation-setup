@@ -1,0 +1,23 @@
+{
+  "name": "aws-automation-setup.utkusarioglu.com",
+  "dockerComposeFile": [
+    "../.docker/docker-compose.dev.yml",
+    "docker-compose.yml"
+  ],
+  "postCreateCommand": "scripts/post-create-command.sh",
+  "service": "aws-automation-setup",
+  "workspaceFolder": "/utkusarioglu-com/aws-automation-setup",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "golang.go",
+        "hashicorp.terraform"
+      ],
+      "settings": {
+        "workbench.colorCustomizations": {
+          "activityBar.background": "#833597"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+version: "3.9"
+
+services:
+  aws-automation-setup:
+    container_name: aws-automation-setup
+    image: utkusarioglu/tf-devcontainer:1.2.18
+    environment:
+      TZ: Etc/UTC0
+    extra_hosts:
+      aws-automation-setup.utkusarioglu.com: host-gateway
+    volumes:
+      - type: bind
+        source: ..
+        target: /utkusarioglu-com/aws-automation-setup
+      - type: bind
+        source: ../.secrets/aws
+        target: /home/terraform/.aws
