@@ -12,6 +12,3 @@ services:
       - type: bind
         source: ..
         target: /utkusarioglu-com/aws-automation-setup
-      - type: bind
-        source: ../.secrets/aws
-        target: /home/terraform/.aws
